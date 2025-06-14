@@ -51,3 +51,9 @@ Usability und schnelle Orientierung bei minimalem Klickaufwand.
 Dieses Projekt befindet sich in einem sehr frühen Stadium. Weitere
 Dokumentation sowie Code für Frontend und Backend werden im Laufe der
 Entwicklung ergänzt.
+
+## Erste Schritte
+
+Zum Testen des aktuellen Prototyps kann die Datei `index.html`
+direkt in einem modernen Browser geöffnet werden. Weitere Abhängigkeiten
+sind nicht erforderlich, da Tailwind über ein CDN eingebunden wird.
