@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IMS Prototype</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+  <header class="bg-blue-600 text-white p-4">
+    <h1 class="text-2xl font-bold">Integriertes Managementsystem</h1>
+  </header>
+
+  <div class="flex min-h-screen">
+    <aside class="w-1/4 bg-white shadow-lg p-4">
+      <nav class="space-y-2">
+        <a href="#" data-section="org" class="block text-blue-700 hover:underline">Organigramm</a>
+        <a href="#" data-section="prozesse" class="block text-blue-700 hover:underline">Prozesse</a>
+        <a href="#" data-section="gbu" class="block text-blue-700 hover:underline">GBU</a>
+        <a href="#" data-section="unterweisungen" class="block text-blue-700 hover:underline">Unterweisungen</a>
+      </nav>
+    </aside>
+
+    <main class="flex-1 p-6 space-y-6">
+      <section id="org" class="section">
+        <h2 class="text-xl font-semibold mb-4">Organigramm</h2>
+        <ul class="border rounded bg-white p-4" id="tree">
+          <li>
+            <button class="toggle font-bold">Unternehmen</button>
+            <ul class="ml-6 mt-2 hidden">
+              <li>
+                <button class="toggle font-medium">Abteilung A</button>
+                <ul class="ml-6 mt-2 hidden">
+                  <li>Team 1</li>
+                  <li>Team 2</li>
+                </ul>
+              </li>
+              <li>
+                <button class="toggle font-medium">Abteilung B</button>
+                <ul class="ml-6 mt-2 hidden">
+                  <li>Team 3</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section id="prozesse" class="section hidden">
+        <h2 class="text-xl font-semibold mb-4">Prozessverwaltung</h2>
+        <p class="bg-white p-4 rounded shadow">Hier können Prozesse angelegt und verwaltet werden.</p>
+      </section>
+
+      <section id="gbu" class="section hidden">
+        <h2 class="text-xl font-semibold mb-4">Gefährdungsbeurteilungen</h2>
+        <p class="bg-white p-4 rounded shadow">Erfasse Risiken und ordne Maßnahmen zu.</p>
+      </section>
+
+      <section id="unterweisungen" class="section hidden">
+        <h2 class="text-xl font-semibold mb-4">Unterweisungen</h2>
+        <p class="bg-white p-4 rounded shadow">Plane und dokumentiere Schulungen.</p>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    document.querySelectorAll('[data-section]').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelectorAll('.section').forEach(sec => sec.classList.add('hidden'));
+        document.getElementById(link.dataset.section).classList.remove('hidden');
+      });
+    });
+
+    document.querySelectorAll('.toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const list = btn.nextElementSibling;
+        if (list) list.classList.toggle('hidden');
+      });
+    });
+  </script>
+</body>
+</html>
